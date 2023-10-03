@@ -562,7 +562,11 @@ to choose this one? Briefly explain your choice below.
 
 <!-------------------------- Start your work below ---------------------------->
 
-# I chose the Vancouver trees dataset, personally this dataset was the most interesting to me as I liked to investigate the species and dimentions of the trees. It was also be interesting to look at the relationships between the age and diameter, if it is located on the street and it’s height.
+\#I chose the Vancouver trees dataset, personally this dataset was the
+most interesting to me as I liked to investigate the species and
+dimentions of the trees. It was also be interesting to look at the
+relationships between the age and diameter, if it is located on the
+street and it’s height.
 
 <!----------------------------------------------------------------------------->
 
@@ -575,7 +579,9 @@ dataset. Note it down below.
 
 <!-------------------------- Start your work below ---------------------------->
 
-# My end goal is looking at the relationship between the tree species in relation to the diameter, height range and where it can commonly be found to find some of the biggest and most common species in Vancouver.
+\#My end goal is looking at the relationship between the tree species in
+relation to the diameter, height range and where it can commonly be
+found to find some of the biggest and most common species in Vancouver.
 
 # Important note
 
@@ -686,7 +692,9 @@ print (filter (vancouver_trees, neighbourhood_name == "KITSILANO"))
 #this shows me that there are 8115 documented trees in the kitsilano neighbourhood that I can walk to and see as the filter function helped me cater my search to just trees near my house. 
 ```
 
-# I wanted to addtionally look at the relationship between 2 variables in a plot being the diameter and neighbourhood to get a sense of where the largest trees were
+\#I wanted to addtionally look at the relationship between 2 variables
+in a plot being the diameter and neighbourhood to get a sense of where
+the largest trees were
 
 ``` r
 ggplot(vancouver_trees, aes(x = diameter, y = neighbourhood_name)) +
@@ -699,7 +707,8 @@ ggplot(vancouver_trees, aes(x = diameter, y = neighbourhood_name)) +
 #this shows me that among all the neighbourhoods the diameters of trees are relatively the same with the largest being in kitsilano, dunbar and hastings. 
 ```
 
-# I wanted to addtionally look at the relationship between 2 variables in a plot being the diameter and species in Kitsilano
+\#I wanted to additionally look at the relationship between 2 variables
+in a plot being the diameter and species in Kitsilano
 
 ``` r
 vancouver_trees %>%
@@ -714,7 +723,9 @@ vancouver_trees %>%
 #this shows me the exact species that I can find in kitsilano that are large with a diameter above 35, this filter had to be added due to the abundant number of tree species so the graph labels could be read. 
 ```
 
-# Lastly I wanted to look at the height of these trees to also see how large they were and if thet were on the curb so I would be able to see them easier.
+\#Lastly I wanted to look at the height of these trees to also see how
+large they were and if thet were on the curb so I would be able to see
+them easier.
 
 ``` r
 ggplot(vancouver_trees, aes(x = height_range_id, colour = curb)) +
