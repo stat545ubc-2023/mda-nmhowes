@@ -211,7 +211,7 @@ typeof (vancouver_trees)
     ## [1] "list"
 
 ``` r
-# I now know the dataset is a list
+#I now know the dataset is a list
 ```
 
 ``` r
@@ -243,11 +243,11 @@ glimpse (vancouver_trees)
     ## $ latitude           <dbl> 49.21776, 49.21776, 49.23938, 49.23469, 49.23894, 4…
 
 ``` r
-#there are 146,611 rows and 20 columns
+#There are 146,611 rows and 20 columns
 ```
 
 ``` r
-#I want to know how many species there are
+#I want to know how many trees there are with a diameter above 5.00
 print (filter (vancouver_trees, diameter > 5.00))
 ```
 
@@ -272,7 +272,7 @@ print (filter (vancouver_trees, diameter > 5.00))
     ## #   latitude <dbl>
 
 ``` r
-#there are 95, 692 trees that have a diameter larger than 5.00
+#There are 95, 692 trees that have a diameter larger than 5.00
 ```
 
 \#exploring cancer_sample data set
@@ -296,7 +296,7 @@ typeof (cancer_sample)
     ## [1] "list"
 
 ``` r
-# I now know the dataset is a list
+#I now know the dataset is a list
 ```
 
 ``` r
@@ -340,11 +340,11 @@ glimpse (cancer_sample)
     ## $ fractal_dimension_worst <dbl> 0.11890, 0.08902, 0.08758, 0.17300, 0.07678, 0…
 
 ``` r
-#there are 569 rows and 32 columns```
+#There are 569 rows and 32 columns
 ```
 
 ``` r
-#I want to know how many patients have an area mean above 1000
+#I want to know how many patients have a tumor area mean above 1000
 print (filter (cancer_sample, area_mean > 1000))
 ```
 
@@ -370,7 +370,7 @@ print (filter (cancer_sample, area_mean > 1000))
     ## #   symmetry_se <dbl>, fractal_dimension_se <dbl>, radius_worst <dbl>, …
 
 ``` r
-#there are 92 patients with an area mean above 1000
+#There are 92 patients with a tumor area mean above 1000
 ```
 
 \#exploring building_permits data set
@@ -394,7 +394,7 @@ typeof (building_permits)
     ## [1] "list"
 
 ``` r
-# I now know the dataset is a list
+#I now know the dataset is a list
 ```
 
 ``` r
@@ -420,7 +420,7 @@ glimpse (building_permits)
     ## $ bi_id                       <dbl> 524, 535, 539, 541, 543, 546, 547, 548, 54…
 
 ``` r
-#there are 20,680 rows and 14 columns
+#There are 20,680 rows and 14 columns
 ```
 
 ``` r
@@ -448,7 +448,7 @@ print (filter (building_permits, year > 2017))
     ## #   year <dbl>, bi_id <dbl>
 
 ``` r
-#there are 13,946 building permits made after 2017
+#There are 13,946 building permits made after 2017
 ```
 
 \#exploring apt_buildings data set
@@ -472,7 +472,7 @@ typeof (apt_buildings)
     ## [1] "list"
 
 ``` r
-# I now know the dataset is a list
+#I now know the dataset is a list
 ```
 
 ``` r
@@ -521,7 +521,7 @@ glimpse (apt_buildings)
     ## $ no_barrier_free_accessible_units <dbl> 2, 0, 0, 42, 0, NA, 14, 0, 0, 1, 25, …
 
 ``` r
-#there are 3,455 rows and 37 columns
+#There are 3,455 rows and 37 columns
 ```
 
 ``` r
@@ -563,10 +563,11 @@ to choose this one? Briefly explain your choice below.
 <!-------------------------- Start your work below ---------------------------->
 
 \#I chose the Vancouver trees dataset, personally this dataset was the
-most interesting to me as I liked to investigate the species and
-dimentions of the trees. It was also be interesting to look at the
-relationships between the age and diameter, if it is located on the
-street and it’s height.
+most interesting to me as I would like to investigate the relationship
+between tree species, location and dimention of the trees. It was also
+be interesting to look at trees that I could potentially see in my
+neighborhood and if they could ge easy to spot based ont ehir location
+and size.
 
 <!----------------------------------------------------------------------------->
 
@@ -579,9 +580,10 @@ dataset. Note it down below.
 
 <!-------------------------- Start your work below ---------------------------->
 
-\#My end goal is looking at the relationship between the tree species in
+\#I would want to look at the relationship between the tree species in
 relation to the diameter, height range and where it can commonly be
-found to find some of the biggest and most common species in Vancouver.
+found to ultimately find the biggest and most common tree species in
+Kitsilano.
 
 # Important note
 
@@ -647,22 +649,38 @@ sufficient comments for a reader to understand your reasoning and code.
 
 <!-------------------------- Start your work below ---------------------------->
 
-\#First I wanted to “Plot the distribution of a numeric variable” for
-this task I want to look at diameter
+\#First I wanted to “Plot the distribution of a numeric variable (#1)”
+for this task I want to look at diameter and what the most common
+diameter is across all the trees.
 
 ``` r
-print (ggplot( vancouver_trees, aes(x = diameter)) + geom_histogram(binwidth=5.5))
+ggplot(vancouver_trees, aes(x = diameter)) + 
+  geom_histogram(binwidth=5.5) +
+  labs(title= "Tree Diameter", x = "diameter (m)", y = "number of trees") %>% 
+  print()
 ```
+
+    ## $x
+    ## [1] "diameter (m)"
+    ## 
+    ## $y
+    ## [1] "number of trees"
+    ## 
+    ## $title
+    ## [1] "Tree Diameter"
+    ## 
+    ## attr(,"class")
+    ## [1] "labels"
 
 ![](mda-nmhowes03_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
 
 ``` r
-#this shows me that most of the diameters are under 50 with majority being around 10.So if I needed to cut some trees I could filter for diameters just under 25 as that is where I would find the majority of them. For this plot I used the diameter for the x axis to view the counts in a histogram.
+#This shows me that most of the diameters are under 50 with majority being around 10.So if I needed to cut some trees I could filter for diameters just under 25 as that is where I would find the majority of them. For this plot I used the diameter for the x axis to view the counts in a histogram using ggplot. 
 ```
 
 \#I also want to look at trees in my own neighbourhood to see what
 tree’s I could look at during an everyday walk (Filter observations in
-your data according to your own criteria)
+your data according to your own criteria \#5)
 
 ``` r
 print (filter (vancouver_trees, neighbourhood_name == "KITSILANO"))
@@ -689,43 +707,101 @@ print (filter (vancouver_trees, neighbourhood_name == "KITSILANO"))
     ## #   latitude <dbl>
 
 ``` r
-#this shows me that there are 8115 documented trees in the kitsilano neighbourhood that I can walk to and see as the filter function helped me cater my search to just trees near my house. 
+#This shows me that there are 8115 documented trees in the kitsilano neighbourhood that I can walk to and see as the filter function helped me cater my search to just trees near my house. 
+
+vancouver_trees %>%
+  group_by(neighbourhood_name = "KITSILANO") %>%
+    top_n(1, species_name)
+```
+
+    ## # A tibble: 1,613 × 20
+    ## # Groups:   neighbourhood_name [1]
+    ##    tree_id civic_number std_street       genus_name species_name cultivar_name
+    ##      <dbl>        <dbl> <chr>            <chr>      <chr>        <chr>        
+    ##  1  156588         2306 KITCHENER ST     MALUS      ZUMI         CALOCARPA    
+    ##  2  157159         4089 SELKIRK ST       MALUS      ZUMI         CALOCARPA    
+    ##  3  157816          515 SALSBURY DRIVE   MALUS      ZUMI         CALOCARPA    
+    ##  4  157818          520 SALSBURY DRIVE   MALUS      ZUMI         CALOCARPA    
+    ##  5  158748         1037 W KING EDWARD AV MALUS      ZUMI         CALOCARPA    
+    ##  6  158750         1063 W KING EDWARD AV MALUS      ZUMI         CALOCARPA    
+    ##  7  158751         4050 OSLER ST         MALUS      ZUMI         CALOCARPA    
+    ##  8  159644         3793 W 18TH AV        MALUS      ZUMI         CALOCARPA    
+    ##  9  159645         6049 DUNBAR ST        MALUS      ZUMI         CALOCARPA    
+    ## 10  159698         1808 E 2ND AV         MALUS      ZUMI         CALOCARPA    
+    ## # ℹ 1,603 more rows
+    ## # ℹ 14 more variables: common_name <chr>, assigned <chr>, root_barrier <chr>,
+    ## #   plant_area <chr>, on_street_block <dbl>, on_street <chr>,
+    ## #   neighbourhood_name <chr>, street_side_name <chr>, height_range_id <dbl>,
+    ## #   diameter <dbl>, curb <chr>, date_planted <date>, longitude <dbl>,
+    ## #   latitude <dbl>
+
+``` r
+#I also wanted to know the most common species located in Kitsilano so I used the top_n function and found the most common species to be "Zumi".
 ```
 
 \#I wanted to addtionally look at the relationship between 2 variables
 in a plot being the diameter and neighbourhood to get a sense of where
-the largest trees were
+the widest trees were (#4)
 
 ``` r
 ggplot(vancouver_trees, aes(x = diameter, y = neighbourhood_name)) +
-     geom_point(aes(size = 0.5, alpha = 0.8))
+     geom_point(size = 0.5, alpha = 0.5) +
+    labs(title= "Diameters among trees in various neighbourhoods", x = "diameter (m)", y = "neighbourhood name") %>% 
+  print()
 ```
+
+    ## $x
+    ## [1] "diameter (m)"
+    ## 
+    ## $y
+    ## [1] "neighbourhood name"
+    ## 
+    ## $title
+    ## [1] "Diameters among trees in various neighbourhoods"
+    ## 
+    ## attr(,"class")
+    ## [1] "labels"
 
 ![](mda-nmhowes03_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
 
 ``` r
-#this shows me that among all the neighbourhoods the diameters of trees are relatively the same with the largest being in kitsilano, dunbar and hastings. 
+#This shows me that among all the neighbourhoods the diameters of trees are relatively the same with the largest being in kitsilano, dunbar and hastings.By creating a plot I can easily see that the outliar points indicating the largest trees are in the neighbourhoods previously listed. 
 ```
 
 \#I wanted to additionally look at the relationship between 2 variables
-in a plot being the diameter and species in Kitsilano
+in a plot (#4) being the diameter and species in Kitsilano and what
+species had the largest diameter.
 
 ``` r
 vancouver_trees %>%
-  filter(neighbourhood_name == "KITSILANO", diameter > 35.00 ) %>%
-  ggplot(aes(x = diameter, y = species_name)) +
-  geom_point()
+  filter(neighbourhood_name == "KITSILANO", diameter > 40.00 ) %>%
+  ggplot(aes(x = diameter, y = common_name)) +
+  geom_point() +
+  labs(title= "Diameters among trees in Kitsilano", x = "diameter (m)", y = "common tree name") %>% 
+  print()
 ```
+
+    ## $x
+    ## [1] "diameter (m)"
+    ## 
+    ## $y
+    ## [1] "common tree name"
+    ## 
+    ## $title
+    ## [1] "Diameters among trees in Kitsilano"
+    ## 
+    ## attr(,"class")
+    ## [1] "labels"
 
 ![](mda-nmhowes03_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->
 
 ``` r
-#this shows me the exact species that I can find in kitsilano that are large with a diameter above 35, this filter had to be added due to the abundant number of tree species so the graph labels could be read. 
+#This shows me the exact species that I can find in Kitsilano that are large with a diameter above 40, this plot also shows the largest tree species in diameter in Kitsilano being a Maple species. To build this plot I first filtered for the neighbourhood as the there are too many tree species in the dataset to show on a single graph, I also had to filter for a diameter above 40. I was then able to view diameters above 40 and tree species. 
 ```
 
 \#Lastly I wanted to look at the height of these trees to also see how
-large they were and if thet were on the curb so I would be able to see
-them easier.
+large they were and if they were located on the curb in a density plot
+(#8) so I would be able to see them easier.
 
 ``` r
 ggplot(vancouver_trees, aes(x = height_range_id, colour = curb)) +
@@ -735,32 +811,25 @@ ggplot(vancouver_trees, aes(x = height_range_id, colour = curb)) +
 ![](mda-nmhowes03_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
 
 ``` r
-#this shows me most of the trees were in the 2 range meaning they were around 20-25 ft as they were in the 20-30 range and that the taller trees could be easily seen while walking as they were located on the curb!
+  labs(title= "Height range density plot", x = "height range", y = "density") %>% 
+  print()
 ```
+
+    ## $x
+    ## [1] "height range"
+    ## 
+    ## $y
+    ## [1] "density"
+    ## 
+    ## $title
+    ## [1] "Height range density plot"
+    ## 
+    ## attr(,"class")
+    ## [1] "labels"
 
 ``` r
-vancouver_trees
+#This shows me most of the trees were in the ID = 2 range meaning they were around 20-25 ft as they were in the 20-30 range and that the same trend is seen for trees both on and off the curb that the trees decrease in density the taller they get and most trees on the curb being around 20 ft. This was easily seen by making a density plot of the height range id and using colour the differentiate between trees located on and off the curb. 
 ```
-
-    ## # A tibble: 146,611 × 20
-    ##    tree_id civic_number std_street    genus_name species_name cultivar_name  
-    ##      <dbl>        <dbl> <chr>         <chr>      <chr>        <chr>          
-    ##  1  149556          494 W 58TH AV     ULMUS      AMERICANA    BRANDON        
-    ##  2  149563          450 W 58TH AV     ZELKOVA    SERRATA      <NA>           
-    ##  3  149579         4994 WINDSOR ST    STYRAX     JAPONICA     <NA>           
-    ##  4  149590          858 E 39TH AV     FRAXINUS   AMERICANA    AUTUMN APPLAUSE
-    ##  5  149604         5032 WINDSOR ST    ACER       CAMPESTRE    <NA>           
-    ##  6  149616          585 W 61ST AV     PYRUS      CALLERYANA   CHANTICLEER    
-    ##  7  149617         4909 SHERBROOKE ST ACER       PLATANOIDES  COLUMNARE      
-    ##  8  149618         4925 SHERBROOKE ST ACER       PLATANOIDES  COLUMNARE      
-    ##  9  149619         4969 SHERBROOKE ST ACER       PLATANOIDES  COLUMNARE      
-    ## 10  149625          720 E 39TH AV     FRAXINUS   AMERICANA    AUTUMN APPLAUSE
-    ## # ℹ 146,601 more rows
-    ## # ℹ 14 more variables: common_name <chr>, assigned <chr>, root_barrier <chr>,
-    ## #   plant_area <chr>, on_street_block <dbl>, on_street <chr>,
-    ## #   neighbourhood_name <chr>, street_side_name <chr>, height_range_id <dbl>,
-    ## #   diameter <dbl>, curb <chr>, date_planted <date>, longitude <dbl>,
-    ## #   latitude <dbl>
 
 # Task 3: Choose research questions
 
@@ -775,15 +844,14 @@ Write the 4 questions and any additional comments below.
 \#1: Are larger trees (diameter) in Kitsilano typically seen on the
 curb?
 
-\#2: What species in Kitsilano have the largest diameter and height?
+\#2: What tree species in Kitsilano have the largest diameter and
+height?
 
 \#3: Do most trees that are larger in diameter mean they are also
 taller?
 
 \#4: What neighborhood has the lowest amount of trees? What species is
 most common there?
-
-# 
 
 # Overall reproducibility/Cleanliness/Coherence Checklist
 
