@@ -106,7 +106,7 @@ And that is exactly the first thing that you will do!
 
 <!-------------------------- Start your work below ---------------------------->
 
-#exploring vancouver_trees data set
+# Exploring vancouver_trees data set
 ```{r}
 #I want to know the class type of this dataset 
 class (vancouver_trees)
@@ -131,7 +131,7 @@ print (filter (vancouver_trees, diameter > 5.00))
 #There are 95, 692 trees that have a diameter larger than 5.00
 ```
 
-#exploring cancer_sample data set
+# Exploring cancer_sample data set
 
 ```{r}
 #I want to know the class type of data 
@@ -158,7 +158,7 @@ print (filter (cancer_sample, area_mean > 1000))
 #There are 92 patients with a tumor area mean above 1000
 ```
 
-#exploring building_permits data set 
+# Exploring building_permits data set 
 
 ```{r}
 #I want to know the class type of data 
@@ -186,7 +186,7 @@ print (filter (building_permits, year > 2017))
 
 ```
 
-#exploring apt_buildings data set 
+# Exploring apt_buildings data set 
 
 ```{r}
 #I want to know the class type of data 
@@ -255,7 +255,7 @@ Make sure that you're using dplyr and ggplot2 rather than base R for this task. 
 
 <!-------------------------- Start your work below ---------------------------->
 
-#First I wanted to "Plot the distribution of a numeric variable (#1)" for this task I want to look at diameter and what the most common diameter is across all the trees. 
+# First I wanted to "Plot the distribution of a numeric variable (#1)" for this task I want to look at diameter and what the most common diameter is across all the trees. 
 ```{r}
 ggplot(vancouver_trees, aes(x = diameter)) + 
   geom_histogram(binwidth=5.5) +
@@ -267,7 +267,7 @@ ggplot(vancouver_trees, aes(x = diameter)) +
 
 
 
-#I also want to look at trees in my own neighbourhood to see what tree's I could look at during an everyday walk (Filter observations in your data according to your own criteria #5) 
+# I also want to look at trees in my own neighbourhood to see what tree's I could look at during an everyday walk (Filter observations in your data according to your own criteria #5) 
 ```{r}
 print (filter (vancouver_trees, neighbourhood_name == "KITSILANO"))
 #This shows me that there are 8115 documented trees in the kitsilano neighbourhood that I can walk to and see as the filter function helped me cater my search to just trees near my house. 
@@ -282,7 +282,7 @@ vancouver_trees %>%
 ```
 
 
-#I wanted to addtionally look at the relationship between 2 variables in a plot being the diameter and neighbourhood to get a sense of where the widest trees were (#4)
+# I wanted to addtionally look at the relationship between 2 variables in a plot being the diameter and neighbourhood to get a sense of where the widest trees were (#4)
 ```{r}
 ggplot(vancouver_trees, aes(x = diameter, y = neighbourhood_name)) +
      geom_point(size = 0.5, alpha = 0.5) +
@@ -291,7 +291,7 @@ ggplot(vancouver_trees, aes(x = diameter, y = neighbourhood_name)) +
 #This shows me that among all the neighbourhoods the diameters of trees are relatively the same with the largest being in kitsilano, dunbar and hastings.By creating a plot I can easily see that the outliar points indicating the largest trees are in the neighbourhoods previously listed. 
 ```
 
-#I wanted to additionally look at the relationship between 2 variables in a plot (#4) being the diameter and species in Kitsilano and what species had the largest diameter. 
+# I wanted to additionally look at the relationship between 2 variables in a plot (#4) being the diameter and species in Kitsilano and what species had the largest diameter. 
 ```{r}
 vancouver_trees %>%
   filter(neighbourhood_name == "KITSILANO", diameter > 40.00 ) %>%
@@ -303,7 +303,7 @@ vancouver_trees %>%
 ```
 
 
-#Lastly I wanted to look at the height of these trees to also see how large they were and if they were located on the curb in a density plot (#8) so I would be able to see them easier. 
+# Lastly I wanted to look at the height of these trees to also see how large they were and if they were located on the curb in a density plot (#8) so I would be able to see them easier. 
 ```{r}
 ggplot(vancouver_trees, aes(x = height_range_id, colour = curb)) +
    geom_density(alpha=0.4)
@@ -369,4 +369,5 @@ You've tagged a release for Milestone 1.
 ### Attribution
 
 Thanks to Icíar Fernández Boyano for mostly putting this together, and Vincenzo Coia for launching.
+
 

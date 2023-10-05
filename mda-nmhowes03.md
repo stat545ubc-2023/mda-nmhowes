@@ -190,7 +190,7 @@ comments outside of the code chunk?
 
 <!-------------------------- Start your work below ---------------------------->
 
-\#exploring vancouver_trees data set
+# Exploring vancouver_trees data set
 
 ``` r
 #I want to know the class type of this dataset 
@@ -275,7 +275,7 @@ print (filter (vancouver_trees, diameter > 5.00))
 #There are 95, 692 trees that have a diameter larger than 5.00
 ```
 
-\#exploring cancer_sample data set
+# Exploring cancer_sample data set
 
 ``` r
 #I want to know the class type of data 
@@ -373,7 +373,7 @@ print (filter (cancer_sample, area_mean > 1000))
 #There are 92 patients with a tumor area mean above 1000
 ```
 
-\#exploring building_permits data set
+# Exploring building_permits data set
 
 ``` r
 #I want to know the class type of data 
@@ -451,7 +451,7 @@ print (filter (building_permits, year > 2017))
 #There are 13,946 building permits made after 2017
 ```
 
-\#exploring apt_buildings data set
+# Exploring apt_buildings data set
 
 ``` r
 #I want to know the class type of data 
@@ -649,9 +649,7 @@ sufficient comments for a reader to understand your reasoning and code.
 
 <!-------------------------- Start your work below ---------------------------->
 
-\#First I wanted to “Plot the distribution of a numeric variable (#1)”
-for this task I want to look at diameter and what the most common
-diameter is across all the trees.
+# First I wanted to “Plot the distribution of a numeric variable (#1)” for this task I want to look at diameter and what the most common diameter is across all the trees.
 
 ``` r
 ggplot(vancouver_trees, aes(x = diameter)) + 
@@ -678,9 +676,7 @@ ggplot(vancouver_trees, aes(x = diameter)) +
 #This shows me that most of the diameters are under 50 with majority being around 10.So if I needed to cut some trees I could filter for diameters just under 25 as that is where I would find the majority of them. For this plot I used the diameter for the x axis to view the counts in a histogram using ggplot. 
 ```
 
-\#I also want to look at trees in my own neighbourhood to see what
-tree’s I could look at during an everyday walk (Filter observations in
-your data according to your own criteria \#5)
+# I also want to look at trees in my own neighbourhood to see what tree’s I could look at during an everyday walk (Filter observations in your data according to your own criteria \#5)
 
 ``` r
 print (filter (vancouver_trees, neighbourhood_name == "KITSILANO"))
@@ -739,9 +735,7 @@ vancouver_trees %>%
 #I also wanted to know the most common species located in Kitsilano so I used the top_n function and found the most common species to be "Zumi".
 ```
 
-\#I wanted to addtionally look at the relationship between 2 variables
-in a plot being the diameter and neighbourhood to get a sense of where
-the widest trees were (#4)
+# I wanted to addtionally look at the relationship between 2 variables in a plot being the diameter and neighbourhood to get a sense of where the widest trees were (#4)
 
 ``` r
 ggplot(vancouver_trees, aes(x = diameter, y = neighbourhood_name)) +
@@ -768,9 +762,7 @@ ggplot(vancouver_trees, aes(x = diameter, y = neighbourhood_name)) +
 #This shows me that among all the neighbourhoods the diameters of trees are relatively the same with the largest being in kitsilano, dunbar and hastings.By creating a plot I can easily see that the outliar points indicating the largest trees are in the neighbourhoods previously listed. 
 ```
 
-\#I wanted to additionally look at the relationship between 2 variables
-in a plot (#4) being the diameter and species in Kitsilano and what
-species had the largest diameter.
+# I wanted to additionally look at the relationship between 2 variables in a plot (#4) being the diameter and species in Kitsilano and what species had the largest diameter.
 
 ``` r
 vancouver_trees %>%
@@ -799,9 +791,7 @@ vancouver_trees %>%
 #This shows me the exact species that I can find in Kitsilano that are large with a diameter above 40, this plot also shows the largest tree species in diameter in Kitsilano being a Maple species. To build this plot I first filtered for the neighbourhood as the there are too many tree species in the dataset to show on a single graph, I also had to filter for a diameter above 40. I was then able to view diameters above 40 and tree species. 
 ```
 
-\#Lastly I wanted to look at the height of these trees to also see how
-large they were and if they were located on the curb in a density plot
-(#8) so I would be able to see them easier.
+# Lastly I wanted to look at the height of these trees to also see how large they were and if they were located on the curb in a density plot (#8) so I would be able to see them easier.
 
 ``` r
 ggplot(vancouver_trees, aes(x = height_range_id, colour = curb)) +
