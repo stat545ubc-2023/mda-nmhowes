@@ -3,7 +3,7 @@
 ### __Introduction__
 This data analysis investigates different data sets with an emphasis on the "Vancouver Trees" dataset which includes information regarding tree species, location, and dimentions in Vancouver. 
 
-This analysis demonstrates the ability to use various dplyr functions and ggplots to investigate different relationships between varibles in datasets as well as summarize and manipulate data. 
+This analysis demonstrates the ability to use various dplyr functions and ggplot to investigate different relationships between varibles in datasets as well as summarize and manipulate data. 
 
 ### Files in Project Folder
 
