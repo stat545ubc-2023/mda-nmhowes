@@ -5,6 +5,8 @@ Nicole
 
 # Welcome to your (maybe) first-ever data analysis project!
 
+# 
+
 And hopefully the first of many. Let’s get started:
 
 1.  Install the [`datateachr`](https://github.com/UBC-MDS/datateachr)
@@ -566,7 +568,7 @@ to choose this one? Briefly explain your choice below.
 most interesting to me as I would like to investigate the relationship
 between tree species, location and dimention of the trees. It was also
 be interesting to look at trees that I could potentially see in my
-neighborhood and if they could ge easy to spot based ont ehir location
+neighborhood and if they could ge easy to spot based on their location
 and size.
 
 <!----------------------------------------------------------------------------->
@@ -649,20 +651,20 @@ sufficient comments for a reader to understand your reasoning and code.
 
 <!-------------------------- Start your work below ---------------------------->
 
-# First I wanted to “Plot the distribution of a numeric variable (#1)” for this task I want to look at diameter and what the most common diameter is across all the trees.
+# First I wanted find the average diameter of the trees to get a sense of how big they were by looking at the diameter distribution and what the most common diameter is across all the trees (Plot the distribution of a numeric variable (#1))
 
 ``` r
 ggplot(vancouver_trees, aes(x = diameter)) + 
   geom_histogram(binwidth=5.5) +
-  labs(title= "Tree Diameter", x = "diameter (m)", y = "number of trees") %>% 
+  labs(title= "Tree Diameter", x = "Diameter (m)", y = "Number of trees") %>% 
   print()
 ```
 
     ## $x
-    ## [1] "diameter (m)"
+    ## [1] "Diameter (m)"
     ## 
     ## $y
-    ## [1] "number of trees"
+    ## [1] "Number of trees"
     ## 
     ## $title
     ## [1] "Tree Diameter"
@@ -673,10 +675,10 @@ ggplot(vancouver_trees, aes(x = diameter)) +
 ![](mda-nmhowes03_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
 
 ``` r
-#This shows me that most of the diameters are under 50 with majority being around 10.So if I needed to cut some trees I could filter for diameters just under 25 as that is where I would find the majority of them. For this plot I used the diameter for the x axis to view the counts in a histogram using ggplot. 
+#This shows me that most of the diameters are under 50 with majority being around 10.So if I needed to cut some trees I could filter for diameters just under 25 as that is where I would find the majority of them. For this plot I used the diameter for the x axis to view the counts in a histogram using ggplot to look at the distribution. 
 ```
 
-# I also want to look at trees in my own neighbourhood to see what tree’s I could look at during an everyday walk (Filter observations in your data according to your own criteria \#5)
+# I also want to look at trees in my own neighbourhood to see what tree’s I could look at during an everyday walk in Kitsilano (Filter observations in your data according to your own criteria \#5)
 
 ``` r
 print (filter (vancouver_trees, neighbourhood_name == "KITSILANO"))
@@ -735,20 +737,20 @@ vancouver_trees %>%
 #I also wanted to know the most common species located in Kitsilano so I used the top_n function and found the most common species to be "Zumi".
 ```
 
-# I wanted to addtionally look at the relationship between 2 variables in a plot being the diameter and neighbourhood to get a sense of where the widest trees were (#4)
+# I wanted to also look at the relationship between 2 variables in a plot being the diameter and neighbourhood to get a sense of where the widest trees were (#4)
 
 ``` r
 ggplot(vancouver_trees, aes(x = diameter, y = neighbourhood_name)) +
      geom_point(size = 0.5, alpha = 0.5) +
-    labs(title= "Diameters among trees in various neighbourhoods", x = "diameter (m)", y = "neighbourhood name") %>% 
+    labs(title= "Diameters among trees in various neighbourhoods", x = "Diameter (m)", y = "Neighbourhood Name") %>% 
   print()
 ```
 
     ## $x
-    ## [1] "diameter (m)"
+    ## [1] "Diameter (m)"
     ## 
     ## $y
-    ## [1] "neighbourhood name"
+    ## [1] "Neighbourhood Name"
     ## 
     ## $title
     ## [1] "Diameters among trees in various neighbourhoods"
@@ -769,15 +771,15 @@ vancouver_trees %>%
   filter(neighbourhood_name == "KITSILANO", diameter > 40.00 ) %>%
   ggplot(aes(x = diameter, y = common_name)) +
   geom_point() +
-  labs(title= "Diameters among trees in Kitsilano", x = "diameter (m)", y = "common tree name") %>% 
+  labs(title= "Diameters among trees in Kitsilano", x = "Diameter (m)", y = "Common Tree Name") %>% 
   print()
 ```
 
     ## $x
-    ## [1] "diameter (m)"
+    ## [1] "Diameter (m)"
     ## 
     ## $y
-    ## [1] "common tree name"
+    ## [1] "Common Tree Name"
     ## 
     ## $title
     ## [1] "Diameters among trees in Kitsilano"
@@ -788,28 +790,23 @@ vancouver_trees %>%
 ![](mda-nmhowes03_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->
 
 ``` r
-#This shows me the exact species that I can find in Kitsilano that are large with a diameter above 40, this plot also shows the largest tree species in diameter in Kitsilano being a Maple species. To build this plot I first filtered for the neighbourhood as the there are too many tree species in the dataset to show on a single graph, I also had to filter for a diameter above 40. I was then able to view diameters above 40 and tree species. 
+#This shows me the exact species that I can find in Kitsilano that are large with a diameter above 40, this plot also shows the largest tree species in diameter in Kitsilano being a Maple species. To build this plot I first filtered for the neighbourhood as the there are too many tree species in the dataset to show on a single graph, I also had to filter for a diameter above 40. I was then able to view diameters above 40 and tree species easily. 
 ```
 
-# Lastly I wanted to look at the height of these trees to also see how large they were and if they were located on the curb in a density plot (#8) so I would be able to see them easier.
+# Lastly I wanted to look at the height of these trees to also see how large they were and if they were located on the curb in a density plot (#8) so I would be able to see them easier on a walk.
 
 ``` r
 ggplot(vancouver_trees, aes(x = height_range_id, colour = curb)) +
-   geom_density(alpha=0.4)
-```
-
-![](mda-nmhowes03_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
-
-``` r
-  labs(title= "Height range density plot", x = "height range", y = "density") %>% 
+   geom_density(alpha=0.4) +
+  labs(title= "Height range density plot", x = "Height Range ID", y = "Density") %>% 
   print()
 ```
 
     ## $x
-    ## [1] "height range"
+    ## [1] "Height Range ID"
     ## 
     ## $y
-    ## [1] "density"
+    ## [1] "Density"
     ## 
     ## $title
     ## [1] "Height range density plot"
@@ -817,8 +814,10 @@ ggplot(vancouver_trees, aes(x = height_range_id, colour = curb)) +
     ## attr(,"class")
     ## [1] "labels"
 
+![](mda-nmhowes03_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
+
 ``` r
-#This shows me most of the trees were in the ID = 2 range meaning they were around 20-25 ft as they were in the 20-30 range and that the same trend is seen for trees both on and off the curb that the trees decrease in density the taller they get and most trees on the curb being around 20 ft. This was easily seen by making a density plot of the height range id and using colour the differentiate between trees located on and off the curb. 
+#This shows me most of the trees were in the ID = 2 range meaning they were around 20-25 ft as they were in the 20-30 range and that the same trend is seen for trees both on and off the curb that the trees decrease in density the taller they get and most trees on the curb are around 20 ft. This was easily seen by making a density plot of the height range id and using colour the differentiate between trees located on and off the curb. 
 ```
 
 # Task 3: Choose research questions
@@ -830,6 +829,10 @@ research question that interested you (Task 1.4). Now it’s time to pick
 Write the 4 questions and any additional comments below.
 
 <!--- *****START HERE***** --->
+
+\#Through my data analysis I’ve found that I wanted to further
+investigate height/diameter of trees in relation to trees in Kitsilano
+and the amount of trees in certain nieghbourhoods.
 
 \#1: Are larger trees (diameter) in Kitsilano typically seen on the
 curb?

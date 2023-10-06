@@ -7,6 +7,7 @@ output: rmarkdown::github_document
 
 
 # Welcome to your (maybe) first-ever data analysis project!
+#
 
 And hopefully the first of many. Let's get started:
 
@@ -218,7 +219,7 @@ print (filter (apt_buildings, balconies == "YES"))
 1.3 **(1 point)** Now that you've explored the 4 datasets that you were initially most interested in, let's narrow it down to 1. What lead you to choose this one? Briefly explain your choice below.
 
 <!-------------------------- Start your work below ---------------------------->
-#I chose the Vancouver trees dataset, personally this dataset was the most interesting to me as I would like to investigate the relationship between tree species, location and dimention of the trees. It was also be interesting to look at trees that I could potentially see in my neighborhood and if they could ge easy to spot based ont ehir location and size.  
+#I chose the Vancouver trees dataset, personally this dataset was the most interesting to me as I would like to investigate the relationship between tree species, location and dimention of the trees. It was also be interesting to look at trees that I could potentially see in my neighborhood and if they could ge easy to spot based on their location and size.  
 
 <!----------------------------------------------------------------------------->
 
@@ -255,19 +256,19 @@ Make sure that you're using dplyr and ggplot2 rather than base R for this task. 
 
 <!-------------------------- Start your work below ---------------------------->
 
-# First I wanted to "Plot the distribution of a numeric variable (#1)" for this task I want to look at diameter and what the most common diameter is across all the trees. 
+# First I wanted find the average diameter of the trees to get a sense of how big they were by looking at the diameter distribution and what the most common diameter is across all the trees (Plot the distribution of a numeric variable (#1))
 ```{r}
 ggplot(vancouver_trees, aes(x = diameter)) + 
   geom_histogram(binwidth=5.5) +
-  labs(title= "Tree Diameter", x = "diameter (m)", y = "number of trees") %>% 
+  labs(title= "Tree Diameter", x = "Diameter (m)", y = "Number of trees") %>% 
   print()
-#This shows me that most of the diameters are under 50 with majority being around 10.So if I needed to cut some trees I could filter for diameters just under 25 as that is where I would find the majority of them. For this plot I used the diameter for the x axis to view the counts in a histogram using ggplot. 
+#This shows me that most of the diameters are under 50 with majority being around 10.So if I needed to cut some trees I could filter for diameters just under 25 as that is where I would find the majority of them. For this plot I used the diameter for the x axis to view the counts in a histogram using ggplot to look at the distribution. 
 
 ```
 
 
 
-# I also want to look at trees in my own neighbourhood to see what tree's I could look at during an everyday walk (Filter observations in your data according to your own criteria #5) 
+# I also want to look at trees in my own neighbourhood to see what tree's I could look at during an everyday walk in Kitsilano (Filter observations in your data according to your own criteria #5) 
 ```{r}
 print (filter (vancouver_trees, neighbourhood_name == "KITSILANO"))
 #This shows me that there are 8115 documented trees in the kitsilano neighbourhood that I can walk to and see as the filter function helped me cater my search to just trees near my house. 
@@ -282,11 +283,11 @@ vancouver_trees %>%
 ```
 
 
-# I wanted to addtionally look at the relationship between 2 variables in a plot being the diameter and neighbourhood to get a sense of where the widest trees were (#4)
+# I wanted to also look at the relationship between 2 variables in a plot being the diameter and neighbourhood to get a sense of where the widest trees were (#4)
 ```{r}
 ggplot(vancouver_trees, aes(x = diameter, y = neighbourhood_name)) +
      geom_point(size = 0.5, alpha = 0.5) +
-    labs(title= "Diameters among trees in various neighbourhoods", x = "diameter (m)", y = "neighbourhood name") %>% 
+    labs(title= "Diameters among trees in various neighbourhoods", x = "Diameter (m)", y = "Neighbourhood Name") %>% 
   print()
 #This shows me that among all the neighbourhoods the diameters of trees are relatively the same with the largest being in kitsilano, dunbar and hastings.By creating a plot I can easily see that the outliar points indicating the largest trees are in the neighbourhoods previously listed. 
 ```
@@ -297,19 +298,19 @@ vancouver_trees %>%
   filter(neighbourhood_name == "KITSILANO", diameter > 40.00 ) %>%
   ggplot(aes(x = diameter, y = common_name)) +
   geom_point() +
-  labs(title= "Diameters among trees in Kitsilano", x = "diameter (m)", y = "common tree name") %>% 
+  labs(title= "Diameters among trees in Kitsilano", x = "Diameter (m)", y = "Common Tree Name") %>% 
   print()
-#This shows me the exact species that I can find in Kitsilano that are large with a diameter above 40, this plot also shows the largest tree species in diameter in Kitsilano being a Maple species. To build this plot I first filtered for the neighbourhood as the there are too many tree species in the dataset to show on a single graph, I also had to filter for a diameter above 40. I was then able to view diameters above 40 and tree species. 
+#This shows me the exact species that I can find in Kitsilano that are large with a diameter above 40, this plot also shows the largest tree species in diameter in Kitsilano being a Maple species. To build this plot I first filtered for the neighbourhood as the there are too many tree species in the dataset to show on a single graph, I also had to filter for a diameter above 40. I was then able to view diameters above 40 and tree species easily. 
 ```
 
 
-# Lastly I wanted to look at the height of these trees to also see how large they were and if they were located on the curb in a density plot (#8) so I would be able to see them easier. 
+# Lastly I wanted to look at the height of these trees to also see how large they were and if they were located on the curb in a density plot (#8) so I would be able to see them easier on a walk. 
 ```{r}
 ggplot(vancouver_trees, aes(x = height_range_id, colour = curb)) +
-   geom_density(alpha=0.4)
-  labs(title= "Height range density plot", x = "height range", y = "density") %>% 
+   geom_density(alpha=0.4) +
+  labs(title= "Height range density plot", x = "Height Range ID", y = "Density") %>% 
   print()
-#This shows me most of the trees were in the ID = 2 range meaning they were around 20-25 ft as they were in the 20-30 range and that the same trend is seen for trees both on and off the curb that the trees decrease in density the taller they get and most trees on the curb being around 20 ft. This was easily seen by making a density plot of the height range id and using colour the differentiate between trees located on and off the curb. 
+#This shows me most of the trees were in the ID = 2 range meaning they were around 20-25 ft as they were in the 20-30 range and that the same trend is seen for trees both on and off the curb that the trees decrease in density the taller they get and most trees on the curb are around 20 ft. This was easily seen by making a density plot of the height range id and using colour the differentiate between trees located on and off the curb. 
 ```
 
 # Task 3: Choose research questions 
@@ -317,6 +318,7 @@ ggplot(vancouver_trees, aes(x = height_range_id, colour = curb)) +
 **(4 points)** So far, you have chosen a dataset and gotten familiar with it through exploring the data. You have also brainstormed one research question that interested you (Task 1.4).  Now it's time to pick 4 research questions that you would like to explore in Milestone 2! Write the 4 questions and any additional comments below. 
 
 <!--- *****START HERE***** --->
+#Through my data analysis I've found that I wanted to further investigate height/diameter of trees in relation to trees in Kitsilano and the amount of trees in certain nieghbourhoods.
 
 #1: Are larger trees (diameter) in Kitsilano typically seen on the curb?
 
