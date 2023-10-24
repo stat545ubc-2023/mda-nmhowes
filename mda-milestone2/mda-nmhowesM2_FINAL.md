@@ -385,7 +385,8 @@ ggplot(vancouver_trees, aes(x = neighbourhood_name, y = height_range_id)) +
   geom_boxplot(width = 0.3) +
   scale_y_log10()+
   coord_flip() +
-  theme_classic()
+  theme_classic() +
+  labs(title= "Heights of Trees across various neighbourhoods", x = "Neighbourhood Name", y = "Height Range ID") 
 ```
 
     ## Warning: Transformation introduced infinite values in continuous y-axis
@@ -398,8 +399,6 @@ ggplot(vancouver_trees, aes(x = neighbourhood_name, y = height_range_id)) +
 ![](mda-nmhowesM2_FINAL_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
 
 ``` r
-#labs(title= "Number of Trees in each Neighborhood", x = "Number of Trees", y = "Neighborhoods")
-  
 #I found that there were multiple neighborhoods that contain trees with a height id of 10 being the highest however the graph doesn't make it clear the neighborhood with the the highest number of trees. 
 ```
 
@@ -513,7 +512,7 @@ newdata%>% pivot_wider(names_from = neighbourhood_name, values_from  = diameter)
 ```
 
 ``` r
-#To tidy my data now I have to revert the changes I madeusing pivot longer 
+#To tidy my data now I have to revert the changes I made using pivot longer 
 
 newdata <- vancouver_trees[c(1:4,13, 15:17)]
 newdata
@@ -753,6 +752,7 @@ summary(diameter.height.lm)
 
 
 
+
     ```r
     plot(diameter ~ height_range_id, data=vancouver_trees)
 
@@ -771,36 +771,35 @@ broom::tidy(diameter.height.lm)
     ## 2 height_range_id    4.52     0.0102     444.  0
 
 ``` r
-#I chose to reproduce the p value. Since the P value is so low this indicates there is a significant relationship between height and diameter among the trees which helps answer my question as I know they are correlated meaning the higher the height of the tree the wider it is. 
+#I chose to reproduce the p value. Since the P value is so low this indicates there is a significant relationship between height and diameter among the trees which helps answer my question as I know changes in the x's value are related to changes in the y variable (diameter and height).
 ```
 
-# Task 4: Reading and writing data
 
-Get set up for this exercise by making a folder called `output` in the
-top level of your project folder / repository. You’ll be saving things
-there.
 
-## 4.1 (3 points)
 
-Take a summary table that you made from Task 1, and write it as a csv
-file in your `output` folder. Use the `here::here()` function.
 
-- **Robustness criteria**: You should be able to move your Mini Project
-  repository / project folder to some other location on your computer,
-  or move this very Rmd file to another location within your project
-  repository / folder, and your code should still work.
-- **Reproducibility criteria**: You should be able to delete the csv
-  file, and remake it simply by knitting this Rmd file.
 
-``` r
-ds <-vancouver_trees %>%
-        group_by(curb) %>%
-        summarise(count = n())
+    # Task 4: Reading and writing data
 
-write_csv(ds, here::here("Output/Task4.csv"))
+    Get set up for this exercise by making a folder called `output` in the top level of your project folder / repository. You'll be saving things there.
 
-#A summary table from Task 1 is now in the output folder on my computer 
-```
+    ## 4.1 (3 points)
+
+    Take a summary table that you made from Task 1, and write it as a csv file in your `output` folder. Use the `here::here()` function.
+
+    -   **Robustness criteria**: You should be able to move your Mini Project repository / project folder to some other location on your computer, or move this very Rmd file to another location within your project repository / folder, and your code should still work.
+    -   **Reproducibility criteria**: You should be able to delete the csv file, and remake it simply by knitting this Rmd file.
+
+
+
+    ```r
+    ds <-vancouver_trees %>%
+            group_by(curb) %>%
+            summarise(count = n())
+
+    write_csv(ds, here::here("Output/Task4.csv"))
+
+    #A summary table from Task 1 is now in the output folder on my computer 
 
 ## 4.2 (3 points)
 

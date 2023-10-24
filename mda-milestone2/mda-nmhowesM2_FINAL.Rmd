@@ -218,10 +218,9 @@ ggplot(vancouver_trees, aes(x = neighbourhood_name, y = height_range_id)) +
   geom_boxplot(width = 0.3) +
   scale_y_log10()+
   coord_flip() +
-  theme_classic()
+  theme_classic() +
+  labs(title= "Heights of Trees across various neighbourhoods", x = "Neighbourhood Name", y = "Height Range ID") 
   
-  
-#labs(title= "Number of Trees in each Neighborhood", x = "Number of Trees", y = "Neighborhoods")
   
 #I found that there were multiple neighborhoods that contain trees with a height id of 10 being the highest however the graph doesn't make it clear the neighborhood with the the highest number of trees. 
 ```
@@ -275,7 +274,7 @@ newdata%>% pivot_wider(names_from = neighbourhood_name, values_from  = diameter)
 
 
 ```{r}
-#To tidy my data now I have to revert the changes I madeusing pivot longer 
+#To tidy my data now I have to revert the changes I made using pivot longer 
 
 newdata <- vancouver_trees[c(1:4,13, 15:17)]
 newdata
@@ -390,14 +389,19 @@ Produce something relevant from your fitted model: either predictions on Y, or a
 
 
 
+
 ```{r}
 plot(diameter ~ height_range_id, data=vancouver_trees)
 diameter.height.lm <- lm(diameter ~ height_range_id, data = vancouver_trees)
 
 broom::tidy(diameter.height.lm)
-#I chose to reproduce the p value. Since the P value is so low this indicates there is a significant relationship between height and diameter among the trees which helps answer my question as I know they are correlated meaning the higher the height of the tree the wider it is. 
+#I chose to reproduce the p value. Since the P value is so low this indicates there is a significant relationship between height and diameter among the trees which helps answer my question as I know changes in the x's value are related to changes in the y variable (diameter and height).
+```
+
 
 ```
+
+
 
 
 
