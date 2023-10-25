@@ -11,7 +11,7 @@ mda-milestone1: This folder pertains to the mini data analysis milestone 1 which
 
 mda-milestone2: This folder pertains to the mini data analysis milestone 2 which includes the mda-nmhowes_FINAL_.Rmd, mda-nmhowes_FINAL_.mda and mda-nmhowes_FINAL_files/figure-gfm which includes the figures generated on R.
 
-Output: This folder pertains to the mini data analysis milestone 2 which includes a Task4.csv and my_fit.rds whcih were generated in the analysis.
+Output: This folder pertains to the mini data analysis milestone 2 which includes a Task4.csv and my_fit.rds which were generated in the analysis.
 
 ### How to Run Code in Files 
 
