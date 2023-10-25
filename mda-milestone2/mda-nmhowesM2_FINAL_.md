@@ -736,7 +736,7 @@ summary(diameter.height.lm)
     ## F-statistic: 1.972e+05 on 1 and 146609 DF,  p-value: < 2.2e-16
 
 ``` r
-#Since the P value is so low this indicates there is a significant relationship between height and diameter among the trees which helps answer my question as I know they are correlated meaning the higher the height of the tree the wider it is. 
+#Since the P value is so low this indicates there is a significant relationship between height and diameter among the trees which helps answer my question as I know they are correlated.
 ```
 
 
